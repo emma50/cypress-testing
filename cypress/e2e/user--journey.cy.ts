@@ -22,9 +22,15 @@ describe("User Journey", () => {
       "eq",
       "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
     ) 
+  
+    cy.getByData("challenge-answer-0").click()
+    cy.getByData("next-lesson-button").should("exist").click()
+    cy.location("pathname").should(
+      "eq", "/testing-your-first-application/setting-up-data-before-each-test"
+    )
     // Complete course and take user to home page
     cy.getByData("challenge-answer-0").click()
     cy.getByData("next-lesson-button").should("exist").click()
-    // cy.location("pathname").should("eq", "/")
+    cy.location("pathname").should("eq", "/")
   })
 })
